@@ -60,6 +60,20 @@ LITTLE_TEAPOT = {
     totalQuantizedSteps: 32,
 };
 
+MARRIED_LIFE = {
+    notes: [
+        {pitch: 65, startTime: 0.0, endTime: 0.5},  //fa
+        {pitch: 69, startTime: 0.5, endTime: 1.0},  //la
+        {pitch: 65, startTime: 1.0, endTime: 1.5},  //Fa
+        {pitch: 64, startTime: 1.5, endTime: 2.5},  //Mi 
+        {pitch: 65, startTime: 3.0, endTime: 3.5},  //Fa
+        {pitch: 69, startTime: 3.5, endTime: 4.0},  //La
+        {pitch: 64, startTime: 4.0, endTime: 4.5},  //Mi
+        {pitch: 62, startTime: 4.5, endTime: 5.5}   //Re
+    ],
+    totalTime: 6
+};
+
 song = TWINKLE_TWINKLE;
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -78,6 +92,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             case "3":
                 song = LITTLE_TEAPOT;
+                break;
+            case "4":
+                song = MARRIED_LIFE;
                 break;
         }
 
