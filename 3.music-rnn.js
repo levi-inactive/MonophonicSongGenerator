@@ -17,8 +17,14 @@ function playRNN() {
     rnn_temperature = parseFloat(document.querySelector('#rnn-temperature').value);
     rnn_steps = parseFloat(document.querySelector('#rnn-steps').value);
 
-    const qns = mm.sequences.quantizeNoteSequence(TWINKLE_TWINKLE, 4);
-    rnnPlayer.start(TWINKLE_TWINKLE)
+    let qns = song;
+
+    if (song !==  LITTLE_TEAPOT) {
+        console.log('This is not LITTLE_TEAPOT');
+        qns = mm.sequences.quantizeNoteSequence(song, 4); 
+    }
+
+    rnnPlayer.start(song)
         .then(() => {
             music_rnn
                 .continueSequence(qns, rnn_steps, rnn_temperature)
