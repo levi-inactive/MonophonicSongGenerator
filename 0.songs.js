@@ -43,9 +43,21 @@ MARRIED_LIFE = {
         {pitch: 65, startTime: 3.0, endTime: 3.5},  //Fa
         {pitch: 69, startTime: 3.5, endTime: 4.0},  //La
         {pitch: 64, startTime: 4.0, endTime: 4.5},  //Mi
-        {pitch: 62, startTime: 4.5, endTime: 5.5}   //Re
+        {pitch: 62, startTime: 4.5, endTime: 5.5},   //Re
+        {pitch: 62, startTime: 5.5, endTime: 6.0},  //Re
+        {pitch: 65, startTime: 6.0, endTime: 6.5},  //Fa
+        {pitch: 62, startTime: 6.5, endTime: 7.0},  //Re
+        {pitch: 60, startTime: 7.0, endTime: 7.5},  //Do 
+        {pitch: 62, startTime: 7.5, endTime: 8.0},  //Re
+        {pitch: 69, startTime: 8.0, endTime: 9.0},  //La
+        {pitch: 67, startTime: 9.0, endTime: 10.0},  //Sol
+        {pitch: 62, startTime: 10.0, endTime: 10.5},  //Re
+        {pitch: 69, startTime: 10.5, endTime: 11.0}, //La
+        {pitch: 67, startTime: 11.0, endTime: 11.5}, //Sol
+        {pitch: 65, startTime: 11.5, endTime: 12.0},  //Fa
+        {pitch: 62, startTime: 12.0, endTime: 13.0}, //Re
     ],
-    totalTime: 6
+    totalTime: 12
 };
 
 song = TWINKLE_TWINKLE;
