@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello Magenta</title>
+
+    <!-- Materialize  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Magenta -->
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.4.2"></script>
+    
+    <script src="0.songs.js"></script>
+    <script src="1.playing-notesequence.js"></script>
+    <script src="2.visualizing-notesequence.js"></script>
+    <script src="3.music-rnn.js"></script>
+    <script src="4.music-vae-creating.js"></script>
+    <script src="5.music-vae-interpolating.js"></script>
+</head>
+<body>
+    <section class="container">
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card">
+                    <div class="card-content">
+                        <h1>Hello Magenta.js</h1>
+                        <p>Google Magenta's <a href="https://hello-magenta.glitch.me/"> Hello Magenta.js </a> Tutorial</p>
+                        <p> <a href=""> Code for this demo. </a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Select a song:</span>
+                        
+                        <div class="input-field">
+                            <select class="song-radio-opt" name="song-radio-opt">
+                                <option value="1">Twinkle Twinkle</option>
+                                <option value="2">Drums</option>
+                                <option value="3">Little Teapot</option>
+                            </select>
+                            <label>Choose a song</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">1. Playing a NoteSequence</span>
+                        <p>Plays the selected song.</p>
+                    </div>
+                    <div class="card-action">
+                        <a id="playing-notesequence-btn" class="btn btn-large waves-effect waves-light">Play NoteSequence</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">2. Visualizing a NoteSequence</span>
+                        <p>Plays the selected song and shows a visualization of it.</p>
+                        <canvas id="canvas"></canvas>
+                    </div>
+                    <div class="card-action">
+                        <a id="visualizing-notesequence-btn" class="btn btn-large waves-effect waves-light">Play NoteSequence</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">3. Music RNN</span>
+                        <p>Google's pre-trained Recurrent Neural Network. Performs well generating music based on short sequences.</p> 
+                        <br>
+                        <p>Plays the selected song, then creates a continuation sequence for the given steps, with the speficied temperature of "randomized" notes.</p>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="rnn-temperature" type="number" class="validate" value="1.5">
+                                <label for="rnn-temperature">Temperature</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="rnn-steps" type="number" class="validate" value="30">
+                                <label for="rnn-steps">Steps</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <a id="music-rnn-btn" class="btn btn-large waves-effect waves-light">Continue NoteSequence</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">4. Music VAE Creating</span>
+                        <p>Google Magenta's pre-trained Variational Auto Encoder. An Encoder-Decoder architecture, tries to recreate song based on its compressed form.</p>
+                        <br>
+                        <p>Creates a completely new sequences with the specified temperature of "ramdomized" notes.</p>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="vae-temperature" type="number" class="validate" value="1.5">
+                                <label for="vae-mperature">Temperature</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <a id="music-vae-creating-btn" class="btn btn-large waves-effect waves-light">Create NoteSequence</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">5. Music VAE Interpolating </span>
+                    </div>
+                    <div class="card-action">
+                        <a class="btn btn-large waves-effect waves-light">Interpolate NoteSequences</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
