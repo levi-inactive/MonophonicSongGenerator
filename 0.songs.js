@@ -49,26 +49,41 @@ MARRIED_LIFE = {
 };
 
 song = TWINKLE_TWINKLE;
+fromSong = TWINKLE_TWINKLE;
+toSong = TWINKLE_TWINKLE;
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, {});
     
     const selectElement = document.querySelector('.song-radio-opt');
+    const vae2SelectFrom = document.querySelector('.vae2-select-from');
+    const vae2SelectTo = document.querySelector('.vae2-select-to');
 
     selectElement.addEventListener('change', (event) => {
-        switch (event.target.value) {
-            case "1":
-                song = TWINKLE_TWINKLE;
-                break;
-            case "3":
-                song = LITTLE_TEAPOT;
-                break;
-            case "4":
-                song = MARRIED_LIFE;
-                break;
-        }
-
+        song = setSong(event);
         viz = new mm.Visualizer(song, document.getElementById('canvas'));
     });
+
+    vae2SelectFrom.addEventListener('change', (event) => {
+        fromSong = setSong(event);
+    })
+
+    vae2SelectTo.addEventListener('change', (event) => {
+        toSong = setSong(event)
+    })
+
 });
+
+function setSong(event) {
+    switch (event.target.value) {
+        case "1":
+            return TWINKLE_TWINKLE;
+        case "3":
+            return LITTLE_TEAPOT;
+        case "4":
+            return MARRIED_LIFE;
+        default:
+            return TWINKLE_TWINKLE;
+    }
+}
