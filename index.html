@@ -13,6 +13,9 @@
     <!-- Magenta -->
     <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.4.2"></script>
     
+    <!-- SweetAlert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script src="0.songs.js"></script>
     <script src="1.playing-notesequence.js"></script>
     <script src="2.visualizing-notesequence.js"></script>
@@ -21,6 +24,31 @@
     <script src="5.music-vae-interpolating.js"></script>
 </head>
 <body>
+    <script>
+        var div = document.createElement('div');
+        
+        var loader = 
+        `<div class="progress">
+            <div class="indeterminate"></div>
+         </div>`
+
+        div.innerHTML = loader;
+        loader = div.firstChild;
+
+        swal("Please wait for AI models to initialize...", {
+            buttons: false,
+            allowOutsideClick: false,
+            content: loader,
+            timer: 1000
+        }).then(
+            () => swal(
+                "Demo Ready", 
+                "AI models initialized sucessfully.", 
+                "success"
+            )
+        );    
+    </script>
+
     <section class="container">
         <div class="row">
             <div class="col s12 m12">
@@ -100,6 +128,16 @@
                                 <label for="rnn-steps">Steps</label>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col s12 m12">
+                                <div class="card teal lighten-5">
+                                    <div class="card-content center-align">
+                                        <h5>Status</h5>
+                                        <p id="rnn-status">Halt</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-action">
                         <a id="music-rnn-btn" class="btn btn-large waves-effect waves-light">Continue NoteSequence</a>
@@ -120,6 +158,16 @@
                             <div class="input-field col s6">
                                 <input id="vae-temperature" type="number" class="validate" value="1.5">
                                 <label for="vae-mperature">Temperature</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m12">
+                                <div class="card teal lighten-5">
+                                    <div class="card-content center-align">
+                                        <h5>Status</h5>
+                                        <p id="vae1-status">Halt</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
