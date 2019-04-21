@@ -3,16 +3,19 @@ music_rnn.initialize();
 
 rnnPlayer = new mm.SoundFontPlayer('https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus');
 
+let musicRNNBtn;
+let rnnStatus;
+
 function playRNN() {
     if (rnnPlayer.isPlaying()) {
         rnnPlayer.stop();
-        document.querySelector('#music-rnn-btn').textContent = 'Continue NoteSequence';
-        document.querySelector('#rnn-status').textContent = 'Halt';
+        musicRNNBtn.textContent = 'Continue NoteSequence';
+        rnnStatus.textContent = 'Halt';
         return;
     }
     
-    document.querySelector('#music-rnn-btn').textContent = 'Stop NoteSequence';
-    document.querySelector('#rnn-status').textContent = 'Playing original song';
+    musicRNNBtn.textContent = 'Stop NoteSequence';
+    rnnStatus.textContent = 'Playing original song';
 
     rnn_temperature = parseFloat(document.querySelector('#rnn-temperature').value);
     rnn_steps = parseFloat(document.querySelector('#rnn-steps').value);
@@ -20,7 +23,6 @@ function playRNN() {
     let qns = song;
 
     if (song !==  LITTLE_TEAPOT) {
-        console.log('This is not LITTLE_TEAPOT');
         qns = mm.sequences.quantizeNoteSequence(song, 4); 
     }
 
@@ -29,11 +31,11 @@ function playRNN() {
             music_rnn
                 .continueSequence(qns, rnn_steps, rnn_temperature)
                 .then((sample) => {
-                    document.querySelector('#rnn-status').textContent = 'Playing RNN response';
+                    rnnStatus.textContent = 'Playing RNN response';
                     rnnPlayer.start(sample)
                         .then(() => {
-                            document.querySelector('#rnn-status').textContent = 'Halt';
-                            document.querySelector('#music-rnn-btn').textContent = 'Continue NoteSequence';
+                            rnnStatus.textContent = 'Halt';
+                            musicRNNBtn.textContent = 'Continue NoteSequence';
                         });
                 })
         });
@@ -41,5 +43,8 @@ function playRNN() {
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-    document.querySelector('#music-rnn-btn').addEventListener('click', playRNN);
+    musicRNNBtn = document.querySelector('#music-rnn-btn');
+    rnnStatus = document.querySelector('#rnn-status');
+
+    musicRNNBtn.addEventListener('click', playRNN);
 });

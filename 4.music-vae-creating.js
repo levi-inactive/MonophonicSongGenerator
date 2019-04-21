@@ -3,27 +3,30 @@ music_vae.initialize();
 
 vaePlayer = new mm.SoundFontPlayer('https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus');
 
+let musicVAECreatingBtn;
+let vae1Status;
+
 function playVAE() {
     if(vaePlayer.isPlaying()) {
         vaePlayer.stop();
-        document.querySelector('#music-vae-creating-btn').textContent = 'Create NoteSequence';
-        document.querySelector('#vae1-status').textContent = 'Halt';
+        musicVAECreatingBtn.textContent = 'Create NoteSequence';
+        vae1Status.textContent = 'Halt';
         return;
     }
 
     vae_temperature = parseFloat(document.querySelector('#vae-temperature').value);
 
-    document.querySelector('#music-vae-creating-btn').textContent = 'Stop NoteSequence'
-    document.querySelector('#vae1-status').textContent = 'Awaiting for VAE response...'
+    musicVAECreatingBtn.textContent = 'Stop NoteSequence'
+    vae1Status.textContent = 'Awaiting for VAE response...'
 
     music_vae
         .sample(1, vae_temperature)
         .then((sample) => {
-            document.querySelector('#vae1-status').textContent = 'Playing VAE response'
+            vae1Status.textContent = 'Playing VAE response'
             vaePlayer.start(sample[0])
                 .then(() => {
-                    document.querySelector('#music-vae-creating-btn').textContent = 'Create NoteSequence';
-                    document.querySelector('#vae1-status').textContent = 'Halt'
+                    musicVAECreatingBtn.textContent = 'Create NoteSequence';
+                    vae1Status.textContent = 'Halt'
                 });
         })
         .then(() => {
@@ -32,5 +35,8 @@ function playVAE() {
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-    document.querySelector('#music-vae-creating-btn').addEventListener('click', playVAE);
+    musicVAECreatingBtn = document.querySelector('#music-vae-creating-btn');
+    vae1Status = document.querySelector('#vae1-status')
+
+    musicVAECreatingBtn.addEventListener('click', playVAE);
 });

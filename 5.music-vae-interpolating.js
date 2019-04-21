@@ -2,16 +2,19 @@
  * Reuses music_vae and vaePlayer from 4.music-vae-creating.js
  */
 
+let musicVAEInterpolatingBtn;
+let vae2Status;
+
 function playInterpolation() {
     if(vaePlayer.isPlaying()) {
         vaePlayer.stop();
-        document.querySelector('#music-vae-interpolating-btn').textContent = 'Interpolate NoteSequences';
-        document.querySelector('#vae2-status').textContent = 'Halt';
+        musicVAEInterpolatingBtn.textContent = 'Interpolate NoteSequences';
+        vae2Status.textContent = 'Halt';
         return;
     }
 
-    document.querySelector('#music-vae-interpolating-btn').textContent = 'Stop NoteSequences';
-    document.querySelector('#vae2-status').textContent = 'Awaiting for VAE response...';
+    musicVAEInterpolatingBtn.textContent = 'Stop NoteSequences';
+    vae2Status.textContent = 'Awaiting for VAE response...';
 
     const from = mm.sequences.quantizeNoteSequence(fromSong, 4);
     const to = mm.sequences.quantizeNoteSequence(toSong, 4);
@@ -19,15 +22,18 @@ function playInterpolation() {
     music_vae
         .interpolate([from, to], 5)
         .then((sample) => {
-            document.querySelector('#vae2-status').textContent = 'Playing VAE response';
+            vae2Status.textContent = 'Playing VAE response';
             vaePlayer.start(sample[2])
                 .then(() => {
-                    document.querySelector('#music-vae-interpolating-btn').textContent = 'Interpolate NoteSequences';
-                    document.querySelector('#vae2-status').textContent = 'Halt';
+                    musicVAEInterpolatingBtn.textContent = 'Interpolate NoteSequences';
+                    vae2Status.textContent = 'Halt';
                 });
         });
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-    document.querySelector('#music-vae-interpolating-btn').addEventListener('click', playInterpolation);
+    musicVAEInterpolatingBtn = document.querySelector('#music-vae-interpolating-btn');
+    vae2Status = document.querySelector('#vae2-status');
+
+    musicVAEInterpolatingBtn.addEventListener('click', playInterpolation);
 });

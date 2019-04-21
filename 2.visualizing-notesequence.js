@@ -1,4 +1,8 @@
+let visualizingNoteSequenceBtn;
+
 document.addEventListener("DOMContentLoaded", function(){
+    visualizingNoteSequenceBtn = document.querySelector('#visualizing-notesequence-btn');
+
     viz = new mm.Visualizer(song, document.getElementById('canvas'));
 
     vizPlayer = new mm.Player(false, {
@@ -6,17 +10,17 @@ document.addEventListener("DOMContentLoaded", function(){
         stop: () => {}
     });
 
-    document.querySelector('#visualizing-notesequence-btn').addEventListener('click', function() {
+    visualizingNoteSequenceBtn.addEventListener('click', function() {
         if (vizPlayer.isPlaying()) {
             vizPlayer.stop();
-            document.querySelector('#visualizing-notesequence-btn').textContent = 'Play NoteSequence';
+            visualizingNoteSequenceBtn.textContent = 'Play NoteSequence';
             return;
         }
 
-        document.querySelector('#visualizing-notesequence-btn').textContent = 'Stop NoteSequence';
+        visualizingNoteSequenceBtn.textContent = 'Stop NoteSequence';
         vizPlayer.start(song)
             .then(
-                () => document.querySelector('#visualizing-notesequence-btn').textContent = 'Play NoteSequence'
+                () => visualizingNoteSequenceBtn.textContent = 'Play NoteSequence'
             );
     });
 });
