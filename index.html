@@ -16,12 +16,15 @@
     <!-- SweetAlert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script src="0.songs.js"></script>
-    <script src="1.playing-notesequence.js"></script>
-    <script src="2.visualizing-notesequence.js"></script>
-    <script src="3.music-rnn.js"></script>
-    <script src="4.music-vae-creating.js"></script>
-    <script src="5.music-vae-interpolating.js"></script>
+    <!-- jQuery -->
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    
+    <script src="songs/pop.js"></script>
+    <script src="script.js"></script>
+    <script src="music-vae-interpolating.js"></script>
 </head>
 <body>
     <script>
@@ -54,8 +57,7 @@
             <div class="col s12 m12">
                 <div class="card">
                     <div class="card-content">
-                        <h1>Hello Magenta.js</h1>
-                        <p>Google Magenta's <a href="https://hello-magenta.glitch.me/"> Hello Magenta.js </a> Tutorial. <a href=""> Code for this demo. </a></p>
+                        <h1>Monophonic Song Generator</h1>
                     </div>
                 </div>
             </div>
@@ -65,155 +67,79 @@
             <div class="col s12 m12">
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-title">Select a song:</span>
+                        <p>Generate a new song, based on popular music of a given genre.</p>
                         
-                        <div class="input-field">
-                            <select class="song-radio-opt" name="song-radio-opt">
-                                <option value="1">Twinkle Twinkle</option>
-                                <option value="3">Little Teapot</option>
-                                <option value="4">Married Life</option>
-                            </select>
-                            <label>Choose a song</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col s12 m12">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">1. Playing a NoteSequence</span>
-                        <p>Plays the selected song.</p>
-                    </div>
-                    <div class="card-action">
-                        <a id="playing-notesequence-btn" class="btn btn-large waves-effect waves-light">Play NoteSequence</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12 m12">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">2. Visualizing a NoteSequence</span>
-                        <p>Plays the selected song and shows a visualization of it.</p>
-                        <canvas id="canvas"></canvas>
-                    </div>
-                    <div class="card-action">
-                        <a id="visualizing-notesequence-btn" class="btn btn-large waves-effect waves-light">Play NoteSequence</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12 m12">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">3. Music RNN</span>
-                        <p>Google's pre-trained Recurrent Neural Network. Performs well generating music based on short sequences.</p> 
-                        <br>
-                        <p>Plays the selected song, then creates a continuation sequence for the given steps, with the speficied temperature of "randomized" notes.</p>
                         <div class="row">
-                            <div class="input-field col s6">
-                                <input id="rnn-temperature" type="number" class="validate" value="1.5">
-                                <label for="rnn-temperature">Temperature</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="rnn-steps" type="number" class="validate" value="30">
-                                <label for="rnn-steps">Steps</label>
+                            <div class="col s6">
+                                <div class="input-field">
+                                    <select id="genre-select"class="vae2-select-to" name="song-radio-opt">
+                                        <option value="1">Pop</option>
+                                    </select>
+                                    <label>Choose a genre</label>
+                                </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col s12 m12">
-                                <div class="card teal lighten-5">
-                                    <div class="card-content center-align">
-                                        <h5>Status</h5>
-                                        <p id="rnn-status">Halt</p>
+                                <div class="card">
+                                    <div class="card-content">
+                                        <span class="card-title">Genre's Song Bank</span>
+                                        <p>These are the songs used to interpolate and generate new songs of this genre.</p>
+
+                                        <div class="row">
+                                            <div class="col s6 m6">
+                                                <div class="card">
+                                                    <div class="card-content">
+                                                        <canvas id="canvas1"></canvas>
+                                                    </div>
+                                                    <div class="card-action">
+                                                        <a id="vis-btn1" class="btn btn-large waves-effect waves-light">Play</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6">
+                                                <div class="card">
+                                                    <div class="card-content">
+                                                        <canvas id="canvas2"></canvas>
+                                                    </div>
+                                                    <div class="card-action">
+                                                        <a id="vis-btn2" class="btn btn-large waves-effect waves-light">Play</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6">
+                                                <div class="card">
+                                                    <div class="card-content">
+                                                        <canvas id="canvas3"></canvas>
+                                                    </div>
+                                                    <div class="card-action">
+                                                        <a id="vis-btn3" class="btn btn-large waves-effect waves-light">Play</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6">
+                                                <div class="card">
+                                                    <div class="card-content">
+                                                        <canvas id="canvas4"></canvas>
+                                                    </div>
+                                                    <div class="card-action">
+                                                        <a id="vis-btn4" class="btn btn-large waves-effect waves-light">Play</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-action">
-                        <a id="music-rnn-btn" class="btn btn-large waves-effect waves-light">Continue NoteSequence</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12 m12">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">4. Music VAE Creating</span>
-                        <p>Google Magenta's pre-trained Variational Auto Encoder. An Encoder-Decoder architecture, tries to recreate song based on its compressed form.</p>
-                        <br>
-                        <p>Creates a completely new sequences with the specified temperature of "ramdomized" notes.</p>
-                        <br>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="vae-temperature" type="number" class="validate" value="1.5">
-                                <label for="vae-mperature">Temperature</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m12">
-                                <div class="card teal lighten-5">
-                                    <div class="card-content center-align">
-                                        <h5>Status</h5>
-                                        <p id="vae1-status">Halt</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-action">
-                        <a id="music-vae-creating-btn" class="btn btn-large waves-effect waves-light">Create NoteSequence</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12 m12">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">5. Music VAE Interpolating </span>
-                        <p>Uses the VAE to create an interpolation between two songs.</p>
-                        
-                        <div class="row">
-                            <div class="col s6">
-                                    <div class="input-field">
-                                        <select class="vae2-select-from" name="song-radio-opt">
-                                            <option value="1">Twinkle Twinkle</option>
-                                            <option value="3">Little Teapot</option>
-                                            <option value="4">Married Life</option>
-                                        </select>
-                                        <label>Choose a song</label>
-                                    </div>
-                            </div>
-                            <div class="col s6">
-                                    <div class="input-field">
-                                        <select class="vae2-select-to" name="song-radio-opt">
-                                            <option value="1">Twinkle Twinkle</option>
-                                            <option value="3">Little Teapot</option>
-                                            <option value="4">Married Life</option>
-                                        </select>
-                                        <label>Choose another song</label>
-                                    </div>
-                            </div>
-                        </div>
 
                         <div class="row">
                             <div class="col s12 m12">
                                 <div class="card teal lighten-5">
                                     <div class="card-content center-align">
                                         <h5>Status</h5>
-                                        <p id="vae2-status">Halt</p>
+                                        <p id="vae-status">Halt</p>
                                     </div>
                                 </div>
                             </div>
