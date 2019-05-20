@@ -25,72 +25,89 @@ function toMidi(note) {
 
 var pop = [
     {
-        name: "Escape - The Pina Colada Song",
+        name: "Pina Colada",
         notes: [
-            { pitch: toMidi("E7"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("E7"), startTime: 0.5, endTime: 1.0 },
-            { pitch: toMidi("E7"), startTime: 1.5, endTime: 2.0 },
-            { pitch: toMidi("D7"), startTime: 2.0, endTime: 2.25 },
-            { pitch: toMidi("D7"), startTime: 2.25, endTime: 2.75 },
-            { pitch: toMidi("E7"), startTime: 2.75, endTime: 3.25 }
+            { pitch: toMidi("E5"), startTime: 0.0, endTime: 0.4 },
+            { pitch: toMidi("E5"), startTime: 0.4, endTime: 0.8 },
+            { pitch: toMidi("E5"), startTime: 0.8, endTime: 1.6 },
+            { pitch: toMidi("E5"), startTime: 1.2, endTime: 2.0 },
+            { pitch: toMidi("D5"), startTime: 2.0, endTime: 2.4 },
+            { pitch: toMidi("D5"), startTime: 2.4, endTime: 2.8 },
+            { pitch: toMidi("D5"), startTime: 2.8, endTime: 3.6 },
+            { pitch: toMidi("E5"), startTime: 3.6, endTime: 4.4 },
+            { pitch: toMidi("D5"), startTime: 5.2, endTime: 5.6 },
+            { pitch: toMidi("E5"), startTime: 5.6, endTime: 6.0 },
+            { pitch: toMidi("D5"), startTime: 6.0, endTime: 6.4 },
+            { pitch: toMidi("E5"), startTime: 6.4, endTime: 7.2 },
+            { pitch: toMidi("D5"), startTime: 7.2, endTime: 7.6 },
+            { pitch: toMidi("D5"), startTime: 7.6, endTime: 8.0 },
+            { pitch: toMidi("D5"), startTime: 8.0, endTime: 8.8 }
         ],
-        totalTime: 4.0
+        totalTime: 8.8
     },
     {
         name: "Wannabe",
         notes: [
-            { pitch: toMidi("F#6"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("F#6"), startTime: 0.5, endTime: 1.5 },
-            { pitch: toMidi("F#6"), startTime: 1.5, endTime: 2.0 },
-            { pitch: toMidi("F#6"), startTime: 2.5, endTime: 3.0 },
-            { pitch: toMidi("F#6"), startTime: 3.0, endTime: 4.0 },
-            { pitch: toMidi("G#6"), startTime: 4.0, endTime: 5.0 },
-            { pitch: toMidi("F#6"), startTime: 5.0, endTime: 6.0 }
+            { pitch: toMidi("C#6"), startTime: 0.0, endTime: 0.2 },
+            { pitch: toMidi("C#6"), startTime: 0.2, endTime: 0.4 },
+            { pitch: toMidi("C#6"), startTime: 0.4, endTime: 0.6 },
+            { pitch: toMidi("C#6"), startTime: 0.6, endTime: 0.8 },
+            { pitch: toMidi("C#6"), startTime: 0.8, endTime: 1.0 },
+            { pitch: toMidi("D#6"), startTime: 1.0, endTime: 1.5 },
+            { pitch: toMidi("C#6"), startTime: 1.5, endTime: 2.0 },
+            { pitch: toMidi("C#6"), startTime: 2.0, endTime: 2.5 },
+            { pitch: toMidi("B5"), startTime: 3.0, endTime: 3.2 },
+            { pitch: toMidi("C#6"), startTime: 3.2, endTime: 3.4 },
+            { pitch: toMidi("B5"), startTime: 3.4, endTime: 3.6 },
+            { pitch: toMidi("C#6"), startTime: 3.6, endTime: 4.0 },
+            { pitch: toMidi("C#6"), startTime: 4.0, endTime: 4.4 },
+            { pitch: toMidi("B5"), startTime: 4.4, endTime: 4.8 },
+            { pitch: toMidi("D#6"), startTime: 4.8, endTime: 5.2 }
         ],
-        totalTime: 1.0
+        totalTime: 6.0
     },
     {
         name: "All Star",
         notes: [
-            { pitch: toMidi("F#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("C#5"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("A#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("A#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("A#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("G#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("F#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("F#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("B4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("A#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("A#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("G#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("G#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("F#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("F#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("C#5"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("A#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("A#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("G#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("G#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("F#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("F#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("D#4"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("C#4"), startTime: 0.0, endTime: 0.5 }
+            { pitch: toMidi("F#4"), startTime: 0.0, endTime: 0.8 },
+            { pitch: toMidi("C#5"), startTime: 0.8, endTime: 1.2 },
+            { pitch: toMidi("A#4"), startTime: 1.2, endTime: 1.6 },
+            { pitch: toMidi("A#4"), startTime: 1.6, endTime: 2.0 },
+            { pitch: toMidi("G#4"), startTime: 2.0, endTime: 2.4 },
+            { pitch: toMidi("G#4"), startTime: 2.4, endTime: 2.8 },
+            { pitch: toMidi("C#5"), startTime: 2.8, endTime: 3.6 },
+            { pitch: toMidi("G#4"), startTime: 3.6, endTime: 4.0 },
+            { pitch: toMidi("G#4"), startTime: 4.0, endTime: 4.4 },
+            { pitch: toMidi("G#4"), startTime: 4.4, endTime: 4.8 },
+            { pitch: toMidi("A#4"), startTime: 4.8, endTime: 5.2 },
+            { pitch: toMidi("G#4"), startTime: 5.2, endTime: 5.6 }
         ],
-        totalTime: 1.0
+        totalTime: 11.0
     },
     {
         name: "Take On Me",
         notes: [
-            { pitch: toMidi("F#7"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("F#7"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("D7"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("B6"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("B6"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("E7"), startTime: 0.0, endTime: 0.5 },
-            { pitch: toMidi("E7"), startTime: 0.0, endTime: 0.5 }
-
+            { pitch: toMidi("F#5"), startTime: 0.0, endTime: 0.2 },
+            { pitch: toMidi("F#5"), startTime: 0.2, endTime: 0.4 },
+            { pitch: toMidi("D5"), startTime: 0.4, endTime: 0.6 },
+            { pitch: toMidi("B4"), startTime: 0.6, endTime: 0.8 },
+            { pitch: toMidi("B4"), startTime: 0.8, endTime: 1.2 },
+            { pitch: toMidi("B4"), startTime: 1.2, endTime: 1.6 },
+            { pitch: toMidi("E5"), startTime: 1.6, endTime: 2.0 },
+            { pitch: toMidi("E5"), startTime: 2.0, endTime: 2.4 },
+            { pitch: toMidi("E5"), startTime: 2.4, endTime: 2.6 },
+            { pitch: toMidi("G#5"), startTime: 2.6, endTime: 2.8 },
+            { pitch: toMidi("G#5"), startTime: 2.8, endTime: 3.0 },
+            { pitch: toMidi("A5"), startTime: 3.0, endTime: 3.2 },
+            { pitch: toMidi("B5"), startTime: 3.2, endTime: 3.4 },
+            { pitch: toMidi("A5"), startTime: 3.4, endTime: 3.6 },
+            { pitch: toMidi("A5"), startTime: 3.6, endTime: 3.8 },
+            { pitch: toMidi("A5"), startTime: 3.8, endTime: 4.0 },
+            { pitch: toMidi("E5"), startTime: 4.0, endTime: 4.4 },
+            { pitch: toMidi("D5"), startTime: 4.4, endTime: 4.8 },
+            { pitch: toMidi("F#5"), startTime: 4.8, endTime: 5.2 },
+            { pitch: toMidi("F#5"), startTime: 5.2, endTime: 5.6 },
         ],
-        totalTime: 1.0
+        totalTime: 10.0
     }
 ]
